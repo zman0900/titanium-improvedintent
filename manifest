@@ -1,0 +1,19 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: Provides additional Intent.putExtra methods that are not available in the 
+Titanium core to allow the type to be specified rather than guessed at.
+author: Dan Ziemba
+license: Public Domain
+copyright: Copyright 2012 by electionsoft
+
+
+# these should not be edited
+name: improvedintent
+moduleid: com.electionsoft.improvedintent
+guid: b9a10ae9-f469-4c84-b721-10252f27e44e
+platform: android
+minsdk: 2.0.2.GA
