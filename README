@@ -1,0 +1,3 @@
+Basically this adds .putLongExtra(key, value) to Ti.Android.intent.
+
+See example/app.js for an explanation of how this works.

@@ -1,39 +1,34 @@
-// This is a test harness for your module
-// You should do something interesting in this harness 
-// to test out the module and to provide instructions 
-// to users on how to use it by example.
-
+// Example of how to use to create an intent that was not possible with base Titanium sdk
 
 // open a single window
 var win = Ti.UI.createWindow({
-	backgroundColor:'white'
+	backgroundColor : 'white'
 });
 var label = Ti.UI.createLabel();
 win.add(label);
 win.open();
 
-// TODO: write your module tests here
 var improvedintent = require('com.electionsoft.improvedintent');
 Ti.API.info("module is => " + improvedintent);
 
-label.text = improvedintent.example();
-
-Ti.API.info("module exampleProp is => " + improvedintent.exampleProp);
-improvedintent.exampleProp = "This is a test value";
+label.text = 'This view should launch an intent to create a new calendar event on newer android devices';
 
 if (Ti.Platform.name == "android") {
-	var proxy = improvedintent.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
+	var intent = ii.createImprovedIntent({
+		data : 'content://com.android.calendar/events',
+		action : Ti.Android.ACTION_INSERT
 	});
-
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
+	var end = new Date();
+	end.setHours(end.getHours() + 5);
+	intent.putExtra('title', 'Awesome event');
+	intent.putLongExtra('beginTime', new Date().getTime());
+	intent.putLongExtra('endTime', end.getTime());
+	intent.putExtra('allDay', false);
+	intent.putExtra('eventLocation', '123 Street Rd.\nCity, ST 12345');
+	intent.putExtra('description', 'Awesome event is awesome!');
+	try {
+		Ti.Android.currentActivity.startActivity(intent);
+	} catch (e) {
+		alert('Calendar not supported');
+	}
 }
-

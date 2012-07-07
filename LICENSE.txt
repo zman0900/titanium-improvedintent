@@ -1,1 +1,1 @@
-Place your license text here.  This file will be incorporated with your app at package time.
+Public domain, do what ever you want.  If this doesn't work, or your house burns down, its not my problem.
